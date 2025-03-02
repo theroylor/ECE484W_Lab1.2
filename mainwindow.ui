@@ -43,10 +43,10 @@
        <item alignment="Qt::AlignHCenter">
         <widget class="QSlider" name="verticalSlider_brightness">
          <property name="minimum">
-          <number>-100</number>
+          <number>0</number>
          </property>
          <property name="maximum">
-          <number>100</number>
+          <number>99</number>
          </property>
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -60,7 +60,7 @@
        <item alignment="Qt::AlignHCenter">
         <widget class="QLabel" name="label_contrast">
          <property name="text">
-          <string>Contrast: 255</string>
+          <string>Contrast: 99</string>
          </property>
         </widget>
        </item>
@@ -77,13 +77,13 @@
           <number>0</number>
          </property>
          <property name="maximum">
-          <number>255</number>
+          <number>99</number>
          </property>
          <property name="value">
-          <number>255</number>
+          <number>99</number>
          </property>
          <property name="sliderPosition">
-          <number>255</number>
+          <number>99</number>
          </property>
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -147,7 +147,7 @@
      <x>0</x>
      <y>0</y>
      <width>1098</width>
-     <height>20</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
