@@ -7,8 +7,12 @@
 #include <QTextStream>
 #include <QVector>
 #include <QtMath>
-#include <QDebug>
 #include <QElapsedTimer>
+#include <QUdpSocket>
+#include <QNetworkDatagram>
+#include <QDebug>
+
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -40,12 +44,16 @@ private slots:
     void update_input();
 
 private:
+    QUdpSocket *udpSocket;
+    QString udpServerIP;
+    quint16 udpServerPort;
     Ui::MainWindow *ui;
     bool image_not_set=1;
     QImage base_image,output_image;
     QVector<double> histogram;
-    int width, height, contrast=255, brightness=0;
+    int width, height, contrast=99, brightness=0;
     double pixel_scale;
     QElapsedTimer timer;
+    void sendUdpMessage();
 };
 #endif // MAINWINDOW_H

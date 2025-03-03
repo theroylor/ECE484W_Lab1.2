@@ -4,15 +4,18 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , udpSocket(new QUdpSocket(this))
+    , udpServerIP("192.168.1.9") // replace with your board's IP
+    , udpServerPort(5005) // replace with your board's port
 {
     ui->setupUi(this);
 }
+
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 
 void MainWindow::on_pushButton_Load_clicked()
 {
@@ -93,7 +96,7 @@ void MainWindow::on_verticalSlider_brightness_valueChanged(int value)
 
 void MainWindow::on_pushButton_contrast_clicked()
 {
-    ui->verticalSlider_contrast->setValue(255);
+    ui->verticalSlider_contrast->setValue(99);
 }
 
 void MainWindow::on_verticalSlider_contrast_valueChanged(int value)
@@ -112,6 +115,8 @@ void MainWindow::on_verticalSlider_contrast_valueChanged(int value)
 
 void MainWindow::update_output()
 {
+
+    sendUdpMessage();
     //ui->label_Contrast->setText("Contrast: "&QString::number))
     if(image_not_set)
     {return;}   // do not run unless image has been set
@@ -155,4 +160,14 @@ void MainWindow::update_output()
     int h = ui -> label_output -> height();
     int w = ui -> label_output -> width();
     ui -> label_output -> setPixmap(QPixmap::fromImage(output_image).scaled(w,h,Qt::KeepAspectRatio));
+}
+void MainWindow::sendUdpMessage()
+{
+    QByteArray datagram;
+    QDataStream stream(&datagram, QIODevice::WriteOnly);
+    stream.setByteOrder(QDataStream::LittleEndian);
+    stream << brightness << contrast;
+    udpSocket->writeDatagram(datagram, QHostAddress(udpServerIP), udpServerPort);
+    qDebug() << "Sending datagram: Brightness =" << brightness << ", Contrast =" << contrast;
+    qDebug() << "Datagram contents:" << datagram.toHex();
 }

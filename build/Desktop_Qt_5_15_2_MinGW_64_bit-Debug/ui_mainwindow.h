@@ -74,8 +74,8 @@ public:
 
         verticalSlider_brightness = new QSlider(horizontalLayoutWidget_2);
         verticalSlider_brightness->setObjectName(QString::fromUtf8("verticalSlider_brightness"));
-        verticalSlider_brightness->setMinimum(-100);
-        verticalSlider_brightness->setMaximum(100);
+        verticalSlider_brightness->setMinimum(0);
+        verticalSlider_brightness->setMaximum(99);
         verticalSlider_brightness->setOrientation(Qt::Vertical);
 
         verticalLayout_2->addWidget(verticalSlider_brightness, 0, Qt::AlignHCenter);
@@ -98,9 +98,9 @@ public:
         verticalSlider_contrast = new QSlider(horizontalLayoutWidget_2);
         verticalSlider_contrast->setObjectName(QString::fromUtf8("verticalSlider_contrast"));
         verticalSlider_contrast->setMinimum(0);
-        verticalSlider_contrast->setMaximum(255);
-        verticalSlider_contrast->setValue(255);
-        verticalSlider_contrast->setSliderPosition(255);
+        verticalSlider_contrast->setMaximum(99);
+        verticalSlider_contrast->setValue(99);
+        verticalSlider_contrast->setSliderPosition(99);
         verticalSlider_contrast->setOrientation(Qt::Vertical);
 
         verticalLayout_6->addWidget(verticalSlider_contrast, 0, Qt::AlignHCenter);
@@ -139,7 +139,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1098, 20));
+        menubar->setGeometry(QRect(0, 0, 1098, 22));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -155,7 +155,7 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         label_brightness->setText(QCoreApplication::translate("MainWindow", "Brightness: +0", nullptr));
         pushButton_brightness->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
-        label_contrast->setText(QCoreApplication::translate("MainWindow", "Contrast: 255", nullptr));
+        label_contrast->setText(QCoreApplication::translate("MainWindow", "Contrast: 99", nullptr));
         pushButton_contrast->setText(QCoreApplication::translate("MainWindow", "Reset", nullptr));
         pushButton_Load->setText(QCoreApplication::translate("MainWindow", "Load Input Image", nullptr));
         pushButton_Save->setText(QCoreApplication::translate("MainWindow", "Save Output Image", nullptr));
